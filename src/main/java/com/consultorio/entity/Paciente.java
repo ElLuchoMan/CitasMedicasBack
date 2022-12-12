@@ -1,11 +1,16 @@
 package com.consultorio.entity;
 
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -48,6 +53,10 @@ public class Paciente {
 
   @Column(name = "v_multa", nullable = true, unique = true)
   private Integer multa;
+
+  @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
+  @JoinColumn(name = "k_id_historia", referencedColumnName = "k_id_historia")
+  private HistoriaMedica historiaMedica;
 
 public Integer getIdentificacion() {
 	return identificacion;
@@ -144,5 +153,14 @@ public Integer getMulta() {
 public void setMulta(Integer multa) {
 	this.multa = multa;
 }
+
+public HistoriaMedica getHistoriaMedica() {
+	return historiaMedica;
+}
+
+public void setHistoriaMedica(HistoriaMedica historiaMedica) {
+	this.historiaMedica = historiaMedica;
+}
+
   
 }
