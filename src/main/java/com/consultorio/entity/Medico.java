@@ -20,38 +20,47 @@ private Integer identificacion;
  //Se declara cada tabla
 private String tipoDocumento;
 
-@Column(name = "v_telefono_contacto", nullable = false, unique = true)
+@Column(name = "v_telefono_contacto", nullable = false)
   private BigInteger telefono;
 
 @Column(name = "v_telefono_cel", nullable = false)
 private BigInteger celular;
 
-@Column(name = "n_nombre", nullable = false, length = 50)
+@Column(name = "n_nombre", nullable = false)
 private String nombre;
 
-@Column(name = "n_apellido", nullable = false, length = 50)
+@Column(name = "n_apellido", nullable = false)
 private String apellido;
 
 @Column(name = "f_nacimiento")
 private Date fechaNacimiento;
 
-@Column(name = "o_especialidad", nullable = false, unique = true)
+@Column(name = "o_especialidad", nullable = false)
 private String  especialidad;
 
 @Column(name = "o_registro", nullable = false, unique = true)
 private String  registroMedico;
 
-@Column(name = "o_sexo", nullable = false, unique = true)
+@Column(name = "o_sexo", nullable = false)
 private String sexo;
 
 @Column(name = "o_c_electronico", nullable = false, unique = true)
 private String email;
 
-@Column(name = "o_numero", nullable = false, unique = true)
-private String  consultorio;
+@Column(name = "n_numero", nullable = true)
+private Integer  consultorio;
 
 @Column(name = "o_sede", nullable = false, unique = true)
 private String  sede;
+
+
+public String getSede() {
+	return sede;
+}
+
+public void setSede(String sede) {
+	this.sede = sede;
+}
 
 public Integer getIdentificacion() {
 	return identificacion;
@@ -107,7 +116,23 @@ public Date getFechaNacimiento() {
 
 public void setFechaNacimiento(Date fechaNacimiento) {
 	this.fechaNacimiento = fechaNacimiento;
-    }
+}
+
+public String getEspecialidad() {
+	return especialidad;
+}
+
+public void setEspecialidad(String especialidad) {
+	this.especialidad = especialidad;
+}
+
+public String getRegistroMedico() {
+	return registroMedico;
+}
+
+public void setRegistroMedico(String registroMedico) {
+	this.registroMedico = registroMedico;
+}
 
 public String getSexo() {
 	return sexo;
@@ -124,6 +149,15 @@ public String getEmail() {
 public void setEmail(String email) {
 	this.email = email;
 }
+
+public Integer getConsultorio() {
+	return consultorio;
+}
+
+public void setConsultorio(Integer consultorio) {
+	this.consultorio = consultorio;
+}
+
 
 
 }
