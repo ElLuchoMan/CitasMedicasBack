@@ -29,22 +29,24 @@ public class PacienteController {
   PacienteService pacienteService;
 
   @GetMapping("/")
-  @ApiOperation(value = "Método que trae la lista de todos los pacientes")
-  public ResponseEntity<List<Paciente>> getLista() {
-    List<Paciente> lista = pacienteService.obtenerTodos();
-    return new ResponseEntity<List<Paciente>>(lista, HttpStatus.OK);
-  }
+	@ApiOperation(value = "Método que trae la lista de todos los contratistas activos")
+	public ResponseEntity<List<Paciente>> getLista() {
+		List<Paciente> lista = pacienteService.obtenerTodos();
+		return new ResponseEntity<List<Paciente>>(lista, HttpStatus.OK);
+	}
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
-@GetMapping("/{identificacion}")
-  @ApiOperation(value = "Método que trae a un paciente mediante su identificacion")
-  public ResponseEntity<Paciente> getOne(@PathVariable Integer identificacion) {
-	// Valida si existe una persona con ese documento
-	if (!pacienteService.existsByIdentificacion(identificacion))
-		return new ResponseEntity(new Mensaje("No existe una persona con esa identificacion"), HttpStatus.NOT_FOUND);
-	Paciente paciente = pacienteService.obtenerPorIdentificacion(identificacion).get();
-	return new ResponseEntity<Paciente>(paciente, HttpStatus.OK);
-  }
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+	@GetMapping("/{documento}")
+	@ApiOperation(value = "Método que trae a un contratista mediante su documento")
+	public ResponseEntity<Paciente> getOne(@PathVariable Integer documento) {
+		// Valida si existe una persona con ese documento
+		if (!pacienteService.existsByIdentificacion(documento))
+			return new ResponseEntity(new Mensaje("No existe una persona con ese documento"), HttpStatus.NOT_FOUND);
+		Paciente contratista = pacienteService.obtenerPorIdentificacion(documento).get();
+		return new ResponseEntity<Paciente>(contratista, HttpStatus.OK);
+	}
+  
+  
   @SuppressWarnings({ "rawtypes", "unchecked" })
 @PostMapping("/nuevo")
   @ApiOperation(value = "Método que crea un nuevo paciente")

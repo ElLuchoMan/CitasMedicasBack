@@ -35,7 +35,7 @@ public class PacienteService {
   }
 
   public List<Paciente> obtenerTodos() {
-    List<Paciente> lista = pacienteRepository.findAll();
-    return lista;
-  }
+		List<Paciente> lista = pacienteRepository.obtenerTodos();
+		return lista;
+	}
 }
