@@ -52,8 +52,14 @@ public class PacienteController {
    // Valida si existe una persona con ese documento
    if (pacienteService.existsByIdentificacion(paciente.getIdentificacion()))
      return new ResponseEntity(new Mensaje("Ya existe una persona con esa identificacion"), HttpStatus.BAD_REQUEST);
+   if (pacienteService.existsByEmail(paciente.getEmail()))
+	     return new ResponseEntity(new Mensaje("Ya existe una persona con ese email"), HttpStatus.BAD_REQUEST);
     if (StringUtils.isBlank(paciente.getNombre()))
       return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+    if (StringUtils.isBlank(paciente.getEmail()))
+        return new ResponseEntity(new Mensaje("El email es obligatorio"), HttpStatus.BAD_REQUEST);
+    if (paciente.getIdentificacion()==null)
+        return new ResponseEntity(new Mensaje("La identificación es obligatoria"), HttpStatus.BAD_REQUEST);
     if(pacienteService.existsByIdentificacion(paciente.getIdentificacion()))
       return new ResponseEntity(new Mensaje("Ya existe una persona con esa identificacion"), HttpStatus.BAD_REQUEST);
     try {

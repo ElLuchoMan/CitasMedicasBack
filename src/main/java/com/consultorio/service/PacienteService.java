@@ -22,6 +22,9 @@ public class PacienteService {
   public boolean existsByIdentificacion(Integer identificacion) {
     return pacienteRepository.existsByIdentificacion(identificacion);
   }
+  public boolean existsByEmail(String correo) {
+	    return pacienteRepository.existsByEmail(correo);
+	  }
 
   public void deleteByIdentificacion(Integer identificacion) {
     pacienteRepository.deleteByIdentificacion(identificacion);

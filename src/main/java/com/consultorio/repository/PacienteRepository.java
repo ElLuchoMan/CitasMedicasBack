@@ -11,5 +11,6 @@ import com.consultorio.entity.Paciente;
 public interface PacienteRepository extends JpaRepository<Paciente,Number>{
 Optional<Paciente> findByIdentificacion(Integer identificacion);
 boolean existsByIdentificacion(Integer identificacion);
+boolean existsByEmail(String correo);
 void deleteByIdentificacion(Number identificacion);
 }
