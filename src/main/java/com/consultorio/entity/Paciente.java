@@ -19,6 +19,7 @@ import javax.persistence.Table;
 public class Paciente {
 
   @Id
+  //Se declara cada tabla
   @Column(name = "k_num_identificacion")
   private Integer identificacion;
 
