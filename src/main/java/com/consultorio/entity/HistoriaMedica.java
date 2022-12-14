@@ -6,16 +6,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "\"historiaMedica\"")
+@SequenceGenerator(name = "HistoriaMedicaSec", sequenceName = "historiaMedicaSeq", initialValue = 1, allocationSize = 1)
 public class HistoriaMedica {
 	@Id
-	  @Column(name = "k_id_historia")
-	  @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "HistoriaMedicaSec")
+	@Column(name = "k_id_historia")
 	  private Integer idHistoria;
-	@OneToOne(mappedBy = "historiaMedica")
+	@OneToOne(mappedBy = "historiaMedica") 
 		private Paciente paciente;
 	public Integer getIdHistoria() {
 		return idHistoria;

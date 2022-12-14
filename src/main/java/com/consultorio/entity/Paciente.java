@@ -1,5 +1,6 @@
 package com.consultorio.entity;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -24,11 +25,11 @@ public class Paciente {
   @Column(name = "o_tipo_documento")
   private String tipoDocumento;
 
-  @Column(name = "k_telefono_contacto", nullable = false, unique = true)
-  private Integer telefono;
+  @Column(name = "v_telefono_contacto", nullable = false, unique = true)
+  private BigInteger telefono;
 
-  @Column(name = "k_telefono_cel", nullable = false)
-  private Integer celular;
+  @Column(name = "v_telefono_cel", nullable = false)
+  private BigInteger celular;
 
   @Column(name = "n_nombre", nullable = false, length = 50)
   private String nombre;
@@ -74,19 +75,19 @@ public void setTipoDocumento(String tipoDocumento) {
 	this.tipoDocumento = tipoDocumento;
 }
 
-public Integer getTelefono() {
+public BigInteger getTelefono() {
 	return telefono;
 }
 
-public void setTelefono(Integer telefono) {
+public void setTelefono(BigInteger telefono) {
 	this.telefono = telefono;
 }
 
-public Integer getCelular() {
+public BigInteger getCelular() {
 	return celular;
 }
 
-public void setCelular(Integer celular) {
+public void setCelular(BigInteger celular) {
 	this.celular = celular;
 }
 
