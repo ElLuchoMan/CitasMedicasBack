@@ -9,6 +9,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "\"historiaMedica\"")
 @SequenceGenerator(name = "HistoriaMedicaSec", sequenceName = "historiaMedicaSeq", initialValue = 1, allocationSize = 1)
@@ -18,7 +20,8 @@ public class HistoriaMedica {
 	@Column(name = "k_id_historia")
 	  private Integer idHistoria;
 	@OneToOne(mappedBy = "historiaMedica") 
-		private Paciente paciente;
+	@JsonIgnore
+	private Paciente paciente;
 	public Integer getIdHistoria() {
 		return idHistoria;
 	}

@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "paciente")
 public class Paciente {
@@ -58,6 +60,7 @@ public class Paciente {
 
   @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
   @JoinColumn(name = "k_id_historia", referencedColumnName = "k_id_historia")
+  @JsonIgnore
   private HistoriaMedica historiaMedica;
 
 public Integer getIdentificacion() {
