@@ -1,4 +1,3 @@
-
 package com.consultorio.entity;
 import java.util.Date;
 

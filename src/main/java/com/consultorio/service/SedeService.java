@@ -19,7 +19,7 @@ public class SedeService {
     return sedeRepository.findByIdSede(idSede);
   }
 
-  public void deleteById_sede(Integer idSede) {
+  public void deleteByIdSede(Integer idSede) {
     sedeRepository.deleteByIdSede(idSede);
   }
 
