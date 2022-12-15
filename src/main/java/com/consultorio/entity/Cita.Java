@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,22 +27,23 @@ public class Cita {
   private Date fechaCita;
 
   @Column(name = "o_tipo_cita")
-  private Integer tipoCita;
+  private String tipoCita;
 
   @Column(name = "o_hora_cita")
   private String horaCita;
 
-  @Column(name = "k_numero")
+  @Column(name = "o_numero")
   private Integer consultorio;
 
   @Column(name = "k_id_sede")
   private Integer idSede;
 
-  @Column(name = "k_num_identificacion")
-  private Integer numeroIde;
-
   @Column(name = "v_copago")
   private Integer copago;
+  
+  @ManyToOne
+  @JoinColumn(name = "k_num_identificacion")
+  private Paciente paciente;
 
 public Integer getIdCita() {
 	return idCita;
@@ -59,11 +61,11 @@ public void setFechaCita(Date fechaCita) {
 	this.fechaCita = fechaCita;
 }
 
-public Integer getTipoCita() {
+public String getTipoCita() {
 	return tipoCita;
 }
 
-public void setTipoCita(Integer tipoCita) {
+public void setTipoCita(String tipoCita) {
 	this.tipoCita = tipoCita;
 }
 
@@ -91,13 +93,6 @@ public void setIdSede(Integer idSede) {
 	this.idSede = idSede;
 }
 
-public Integer getNumeroIde() {
-	return numeroIde;
-}
-
-public void setNumeroIde(Integer numeroIde) {
-	this.numeroIde = numeroIde;
-}
 
 public Integer getCopago() {
 	return copago;
@@ -105,6 +100,14 @@ public Integer getCopago() {
 
 public void setCopago(Integer copago) {
 	this.copago = copago;
+}
+
+public Paciente getPaciente() {
+	return paciente;
+}
+
+public void setPaciente(Paciente paciente) {
+	this.paciente = paciente;
 }
 
 

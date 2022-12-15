@@ -6,6 +6,8 @@ import com.consultorio.service.MedicoService;
 
 
 import io.swagger.annotations.ApiOperation;
+
+import java.math.BigInteger;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -38,7 +40,7 @@ public class MedicoController {
   @SuppressWarnings({ "unchecked", "rawtypes" })
 	@GetMapping("/{documento}")
 	@ApiOperation(value = "Método que trae a un contratista mediante su documento")
-	public ResponseEntity<Medico> getOne(@PathVariable Integer documento) {
+	public ResponseEntity<Medico> getOne(@PathVariable BigInteger documento) {
 		if (!medicoService.existsByIdentificacion(documento))
 			return new ResponseEntity(new Mensaje("No existe una persona con ese documento"), HttpStatus.NOT_FOUND);
 		Medico contratista = medicoService.obtenerPorIdentificacion(documento).get();
@@ -50,7 +52,6 @@ public class MedicoController {
 @PostMapping("/nuevo")
   @ApiOperation(value = "Método que crea un nuevo Medico")
   public ResponseEntity<?> create(@RequestBody Medico medico) {
-   // Valida si existe una persona con ese documento
    if (medicoService.existsByIdentificacion(medico.getIdentificacion()))
      return new ResponseEntity(new Mensaje("Ya existe una persona con esa identificacion"), HttpStatus.BAD_REQUEST);
    if (medicoService.existsByEmail(medico.getEmail()))

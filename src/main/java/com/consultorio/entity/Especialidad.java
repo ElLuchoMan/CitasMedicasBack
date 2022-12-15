@@ -26,7 +26,7 @@ public class Especialidad {
   private Integer idEspecialidad;
 
   @Column(name = "n_nombre")
-  private Integer nombreEspecialidad;
+  private String nombreEspecialidad;
 
   @Column(name = "k_id_equipo")
   private Integer idEquipo;
@@ -47,11 +47,11 @@ public Integer getIdEspecialidad() {
 public void setIdEspecialidad(Integer idEspecialidad) {
     this.idEspecialidad = idEspecialidad;
 }
-public Integer getNombreEspecialidad() {
+public String getNombreEspecialidad() {
     return this.nombreEspecialidad;
 }
 
-public void setNombreEspecialidad(Integer nombreEspecialidad) {
+public void setNombreEspecialidad(String nombreEspecialidad) {
     this.nombreEspecialidad = nombreEspecialidad;
 }
 

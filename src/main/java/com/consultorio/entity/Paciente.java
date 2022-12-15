@@ -2,6 +2,7 @@
 package com.consultorio.entity;
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -62,9 +64,13 @@ public class Paciente {
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
   @JoinColumn(name = "k_id_historia", referencedColumnName = "k_id_historia")
- 
   private HistoriaMedica historiaMedica;
 
+  @JsonIgnore
+  @OneToMany(mappedBy = "idCita", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @Column(name = "k_id_cita", nullable = false)
+  Set<Cita> cita;
+  
 public Integer getIdentificacion() {
 	return identificacion;
 }
@@ -167,6 +173,14 @@ public HistoriaMedica getHistoriaMedica() {
 
 public void setHistoriaMedica(HistoriaMedica historiaMedica) {
 	this.historiaMedica = historiaMedica;
+}
+
+public Set<Cita> getCita() {
+	return cita;
+}
+
+public void setCita(Set<Cita> cita) {
+	this.cita = cita;
 }
 
   

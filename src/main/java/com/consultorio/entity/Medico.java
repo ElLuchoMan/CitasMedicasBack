@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Medico {
 @Id
 @Column(name="k_num_identificacion")
-private Integer identificacion;
+private BigInteger identificacion;
 
 @Column(name="o_tipo_documento")
 private String tipoDocumento;
@@ -65,11 +65,11 @@ public void setSede(Integer sede) {
 	this.sede = sede;
 }
 
-public Integer getIdentificacion() {
+public BigInteger getIdentificacion() {
 	return identificacion;
 }
 
-public void setIdentificacion(Integer identificacion) {
+public void setIdentificacion(BigInteger identificacion) {
 	this.identificacion = identificacion;
 }
 

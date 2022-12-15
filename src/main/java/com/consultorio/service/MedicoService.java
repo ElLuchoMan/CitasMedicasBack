@@ -3,6 +3,7 @@ package com.consultorio.service;
 import com.consultorio.entity.Medico;
 import com.consultorio.repository.MedicoRepository;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -16,18 +17,18 @@ public class MedicoService {
   @Autowired
   MedicoRepository medicoRepository;
 
-  public Optional<Medico> obtenerPorIdentificacion(Integer identificacion) {
+  public Optional<Medico> obtenerPorIdentificacion(BigInteger identificacion) {
     return medicoRepository.findByIdentificacion(identificacion);
   }
 
-  public boolean existsByIdentificacion(Integer identificacion) {
+  public boolean existsByIdentificacion(BigInteger identificacion) {
     return medicoRepository.existsByIdentificacion(identificacion);
   }
   public boolean existsByEmail(String correo) {
 	    return medicoRepository.existsByEmail(correo);
 	  }
 
-  public void deleteByIdentificacion(Integer identificacion) {
+  public void deleteByIdentificacion(BigInteger identificacion) {
     medicoRepository.deleteByIdentificacion(identificacion);
   }
 
