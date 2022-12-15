@@ -1,8 +1,21 @@
+
 package com.consultorio.entity;
+import java.math.BigInteger;
+import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "cita")
@@ -60,28 +73,27 @@ public class Cita {
 
 
   @Column(name = "k_numero")
-  private Integer horaCita;
+  private Integer idConsultorio;
 
-	public Integer getHoraCita() {
-		return this.horaCita;
+	public Integer getIdConsultorio() {
+		return this.idConsultorio;
 	}
 
-	public void setHoraCita(Integer horaCita) {
-		this.horaCita = horaCita;
+	public void setIdConsultorio(Integer idConsultorio) {
+		this.idConsultorio = idConsultorio;
 	}
 
 
   @Column(name = "k_id_sede")
-  private Integer horaCita;
+  private Integer idSede;
 
-	public Integer getHoraCita() {
-		return this.horaCita;
+	public Integer getIdSede() {
+		return this.idSede;
 	}
 
-	public void setHoraCita(Integer horaCita) {
-		this.horaCita = horaCita;
+	public void setIdSede(Integer idSede) {
+		this.idSede = idSede;
 	}
-
 
   @Column(name = "k_num_identificacion")
   private Integer numeroIde;
@@ -97,16 +109,13 @@ public class Cita {
 
   @Column(name = "v_copago")
 
-	public = get"V_copago")() {
-		return this."v_copago");
-	}
-
-	public void set"V_copago")(= "v_copago")) {
-		this."v_copago") = "v_copago");
-	}
-
   private Integer copago;
 
+	public Integer getCopago() {
+		return this.copago;
+	}
+
+	public void setCopago(Integer copago) {
 
 
 
