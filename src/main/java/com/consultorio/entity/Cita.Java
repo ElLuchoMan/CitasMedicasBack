@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,9 +18,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "cita")
+@SequenceGenerator(name = "CitaSec", sequenceName = "citaSeq", initialValue = 1, allocationSize = 1)
 public class Cita {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CitaSec")
   @Column(name = "k_id_cita")
   private Integer idCita;
 
