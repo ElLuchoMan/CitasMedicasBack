@@ -3,9 +3,13 @@ package com.consultorio.entity;
 import java.util.Date;
 import java.math.BigInteger;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,11 +17,9 @@ import javax.persistence.Table;
 public class Medico {
 @Id
 @Column(name="k_num_identificacion")
- //Se declara cada tabla
 private Integer identificacion;
 
 @Column(name="o_tipo_documento")
- //Se declara cada tabla
 private String tipoDocumento;
 
 @Column(name = "v_telefono_contacto", nullable = false)
@@ -47,18 +49,19 @@ private String sexo;
 @Column(name = "o_c_electronico", nullable = false, unique = true)
 private String email;
 
-@Column(name = "n_numero", nullable = true)
-private Integer  consultorio;
+@ManyToOne
+@JoinColumn(name = "o_numero")
+public Consultorio consultorio;
 
-@Column(name = "o_sede", nullable = false, unique = true)
-private String  sede;
+@Column(name = "k_id_sede", nullable = false, unique = true)
+private Integer  sede;
 
 
-public String getSede() {
+public Integer getSede() {
 	return sede;
 }
 
-public void setSede(String sede) {
+public void setSede(Integer sede) {
 	this.sede = sede;
 }
 
@@ -150,14 +153,11 @@ public void setEmail(String email) {
 	this.email = email;
 }
 
-public Integer getConsultorio() {
+public Consultorio getConsultorio() {
 	return consultorio;
 }
 
-public void setConsultorio(Integer consultorio) {
+public void setConsultorio(Consultorio consultorio) {
 	this.consultorio = consultorio;
 }
-
-
-
 }

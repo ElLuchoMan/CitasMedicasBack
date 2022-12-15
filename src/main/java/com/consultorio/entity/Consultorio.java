@@ -1,6 +1,8 @@
 package com.consultorio.entity;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,6 +29,11 @@ public class Consultorio {
   private Integer idSede;
   @Column(name = "k_id_especialidad")
   private Integer idEspecialidad;
+  
+  @JsonIgnore
+	@OneToMany(mappedBy = "identificacion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@Column(name = "k_num_identificacion", nullable = false)
+	Set<Medico> medico;
 
 public Integer getIdEspecialidad() {
       return this.idEspecialidad;
@@ -50,6 +58,14 @@ public Integer getIdSede() {
 
 public void setIdSede(Integer idSede) {
     this.idSede = idSede;
+}
+
+public Set<Medico> getMedico() {
+	return medico;
+}
+
+public void setMedico(Set<Medico> medico) {
+	this.medico = medico;
 }
 
 
