@@ -29,7 +29,7 @@ public class Consultorio {
   private Integer idSede;
   @Column(name = "k_id_especialidad")
   private Integer idEspecialidad;
-  
+  @JsonIgnore
 	@OneToMany(mappedBy = "identificacion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@Column(name = "k_num_identificacion", nullable = true)
 	Set<Medico> medico;
