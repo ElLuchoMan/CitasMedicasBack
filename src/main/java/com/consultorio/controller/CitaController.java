@@ -42,7 +42,7 @@ public class CitaController {
 		// Valida si existe una persona con ese documento
 		if (!citaService.existsByIdCita(idCita))
 			return new ResponseEntity(new Mensaje("No existe una cita con este ID"), HttpStatus.NOT_FOUND);
-		Cita contratista = citaService.obtenerPorIdCitaexistsByIdCita(documento).get();
+		Cita contratista = citaService.obtenerPorIdCita(idCita).get();
 		return new ResponseEntity<Cita>(contratista, HttpStatus.OK);
 	}
   
