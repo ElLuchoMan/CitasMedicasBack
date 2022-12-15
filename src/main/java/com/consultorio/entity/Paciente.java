@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "paciente")
@@ -58,6 +59,7 @@ public class Paciente {
   @Column(name = "v_multa", nullable = true, unique = true)
   private Integer multa;
 
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
   @JoinColumn(name = "k_id_historia", referencedColumnName = "k_id_historia")
  

@@ -39,7 +39,6 @@ public class MedicoController {
 	@GetMapping("/{documento}")
 	@ApiOperation(value = "Método que trae a un contratista mediante su documento")
 	public ResponseEntity<Medico> getOne(@PathVariable Integer documento) {
-		// Valida si existe una persona con ese documento
 		if (!medicoService.existsByIdentificacion(documento))
 			return new ResponseEntity(new Mensaje("No existe una persona con ese documento"), HttpStatus.NOT_FOUND);
 		Medico contratista = medicoService.obtenerPorIdentificacion(documento).get();
