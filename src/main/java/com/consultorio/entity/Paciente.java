@@ -1,5 +1,5 @@
-package com.consultorio.entity;
 
+package com.consultorio.entity;
 import java.math.BigInteger;
 import java.util.Date;
 
@@ -60,7 +60,7 @@ public class Paciente {
 
   @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
   @JoinColumn(name = "k_id_historia", referencedColumnName = "k_id_historia")
-  @JsonIgnore
+ 
   private HistoriaMedica historiaMedica;
 
 public Integer getIdentificacion() {
